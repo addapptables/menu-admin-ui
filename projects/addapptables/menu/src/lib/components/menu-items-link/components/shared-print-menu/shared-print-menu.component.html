@@ -1,0 +1,9 @@
+<ul>
+    <li *ngFor="let menu of menus" #menuElement="routerLinkActive" [routerLinkActive]="!menu.multiOption? 'menu-items-button-active': ''"
+        [routerLinkActiveOptions]="{exact: menu.exact}">
+        <addapptable-menu-single [routerLink]="menu.url" *ngIf="!menu.multiOption" [menu]="menu" (click)="openCloseMenu()"></addapptable-menu-single>
+        <addapptable-menu-group #menuGroup *ngIf="menu.multiOption" [menu]="menu">
+            <addapptable-shared-print-menu class="menu-children" [menus]="menu.children" *ngIf="menuGroup.isOpen$ | async"></addapptable-shared-print-menu>
+        </addapptable-menu-group>
+    </li>
+</ul>

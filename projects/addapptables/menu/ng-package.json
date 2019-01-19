@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../../dist/addapptables/menu",
+  "lib": {
+    "entryFile": "src/public_api.ts",
+    "umdModuleIds": {
+      "@addapptables/responsive": "addapptables-responsive",
+      "@addapptables/ngrx-actions": "addapptables-ngrx-actions",
+      "@addapptables/perfect-scrollbar": "addapptables-perfect-scrollbar",
+      "@ngx-translate/core": "ngx-translate-core",
+      "@ngrx/store": "ngrx-store"
+    }
+  }
+}
