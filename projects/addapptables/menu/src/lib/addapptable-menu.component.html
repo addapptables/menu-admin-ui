@@ -1,8 +1,8 @@
 <div (click)="$event.stopPropagation()" [ngClass]="{'menu-open': open$ | async, 'menu-mini': activeMenuMini$ | async, 'menu-hover': collapseMenu$ | async }"
   class="menu d-flex flex-column flex-wrap align-content-start">
-  <ng-content select="app-menu-header"></ng-content>
+  <ng-content select="addapptable-menu-header"></ng-content>
   <div addapptablesPerfectScrollbar class="menu-scroll-container d-flex flex-column flex-wrap align-content-start">
-    <ng-content select="app-menu-user"></ng-content>
-    <ng-content select="app-menu-items-link"></ng-content>
+    <ng-content select="addapptable-menu-user"></ng-content>
+    <ng-content select="addapptable-menu-items-link"></ng-content>
   </div>
 </div>
