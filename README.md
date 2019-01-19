@@ -73,3 +73,22 @@ user: MenuUserModel = {
   </addapptable-menu-items-link>
 </addapptable-menu>
 ```
+
+```scss
+@import '~@angular/material/theming';
+@import '~@addapptables/menu/_addapptables-menu.theme.scss';
+
+$addapptable-app-primary: mat-palette($mat-teal, 800);
+$addapptable-app-accent:  mat-palette($mat-pink, 800, A100, 100);
+$addapptable-app-warn: mat-palette($mat-red);
+$addapptable-app-theme: mat-light-theme($addapptable-app-primary, $addapptable-app-accent, $addapptable-app-warn);
+$addapptable-theme-variables: (
+    text: white,
+    transition-time: 250ms,
+    border-radius: 5px
+);
+
+body.theme-default {
+    @include addapptable-menu($addapptable-app-theme, $addapptable-theme-variables);
+}
+```
