@@ -43,4 +43,4 @@ import { AddapptablePerfectScrollbarModule } from '@addapptables/perfect-scrollb
     CollapseButtonMobileComponent
   ]
 })
-export class AddapptableMenuModule { }
+export class MenuModule { }
