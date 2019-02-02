@@ -1,9 +1,11 @@
 # ADDAPPTABLES menu
 
+ADAPTABLES menu is a library for angular
+
 [See demo](http://addapptables.com/admin/dashboard)
 
 ## Getting Started
-To get started, lets install the package thru npm:
+To get started, let's install the package through npm:
 
 ```
 npm i @addapptables/menu --S
@@ -16,32 +18,78 @@ npm i
 @addapptables/responsive
 @addapptables/ngrx-actions
 @addapptables/perfect-scrollbar
+@addapptables/core
+perfect-scrollbar
 @ngrx/store
 @ngx-translate/core --S
 ```
 
 ## Configuration
 
-Configure @ngx-translate/core see [link](https://github.com/ngx-translate/core)
+- First, you have to configure the library @ngx-translate/core to have the translation into the menu
 
-## How to use
+The library is configured as follows:
+
+```typescript
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+export function createTranslateLoader(http: HttpClient) {
+    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+@NgModule({
+    imports: [
+        HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (createTranslateLoader),
+                deps: [HttpClient]
+            }
+        })
+    ]
+})
+export class AppModule { }
+```
+
+- To obtain more information about @ngx-translate/core view [link](https://github.com/ngx-translate/core)
+
+- Addapptables menu uses the library ngrx as a base, you have to set this library in your AppModule as follows:
+
+```typescript
+import { ResponsiveModule } from '@addapptables/responsive';
+@NgModule({
+    imports: [
+        StoreModule.forRoot(...your configuration),
+        EffectsModule.forRoot([]),
+        ResponsiveModule // important
+    ],
+})
+export class AppModule { }
+```
+
+- To obtain more information about ngrx view [link](https://ngrx.io/guide/store)
+
+## How to use?
+
+- First, you have to create a module and import MenuModule as follows:
 
 ```typescript
 
 import { MenuModule } from '@addapptables/menu';
 @NgModule({
   imports: [MenuModule]
+  declarations: [MenuComponent]
 })
 export class YourModule { }
 
 
+// component
 import { MenuModel, MenuHeaderModel, MenuUserModel } from '@addapptables/menu';
-
-@Component({
-    selector: 'app-menu',
-    templateUrl: './menu.component.html'
-})
+@Component(
+    ...
+)
 export class MenuComponent {
+    // variable to show the links of the menu
     menus: MenuModel[] = [
     {
         id: '1',
@@ -74,11 +122,13 @@ export class MenuComponent {
         ]
     }]
 
+    // header of the menu
     header: MenuHeaderModel = {
         companyName: 'ADDAPPTABLES',
         logoUrl: 'assets/images/logo/addaptables.svg'
     };
 
+    // user data
     user: MenuUserModel = {
         initialName: 'MG',
         fullName: 'Mateo Guerra',
@@ -87,6 +137,8 @@ export class MenuComponent {
     };
 }
 ```
+
+- So now you can use the variables into the html as follows
 
 ```html
 <addapptable-menu>
@@ -99,7 +151,16 @@ export class MenuComponent {
 </addapptable-menu>
 ```
 
+- In cellphone mode you can use the following component to colpase the menu
+
+```html
+    <addapptable-colapse-button-mobile></addapptable-colapse-button-mobile>
+```
+
+- Finaly, it is important to import the styles to the application
+
 ```scss
+@import '~@addapptables/core/addapptables-grid.theme';
 @import '~@angular/material/theming';
 @import '~@addapptables/menu/_addapptables-menu.theme.scss';
 
@@ -112,8 +173,15 @@ $addapptable-theme-variables: (
     transition-time: 250ms,
     border-radius: 5px
 );
-
+@include mat-core();
 body.theme-default {
+    @include angular-material-theme($addapptable-app-theme);
     @include addapptable-menu($addapptable-app-theme, $addapptable-theme-variables);
 }
+```
+
+- Do not forget to put the theme-default class on the html body
+
+```html
+<body class="theme-default"></body>
 ```
