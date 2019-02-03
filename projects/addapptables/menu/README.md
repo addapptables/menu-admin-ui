@@ -4,6 +4,8 @@ ADAPTABLES menu is a library for angular
 
 [See demo](http://addapptables.com/admin/dashboard)
 
+[Example code](https://stackblitz.com/edit/angular-menu-addapptables)
+
 ## Getting Started
 To get started, let's install the package through npm:
 
@@ -33,6 +35,8 @@ The library is configured as follows:
 ```typescript
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -184,4 +188,12 @@ body.theme-default {
 
 ```html
 <body class="theme-default"></body>
+```
+
+# Assets
+
+Background menu sidebar
+
+```
+/assets/images/backgrounds/sidebar.jpg
 ```
