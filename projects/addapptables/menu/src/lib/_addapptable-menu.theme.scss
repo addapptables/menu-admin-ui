@@ -2,6 +2,9 @@
 @import './mixins';
 
 @mixin addapptable-menu($theme, $variables) {
+    h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+    }
     $background: map-get($theme, background);
     $primary: map-get($theme, primary);
     $foreground: map-get($theme, foreground);
@@ -49,7 +52,7 @@
             &-user{
                 &-avatar{
                     @include transition();
-                    width: 60px;
+                    width: 60px !important;
                 }
             }
             &-hide {
@@ -68,7 +71,7 @@
                 opacity: 0;
             }
             &:hover .menu-mini-user-avatar{
-                width: 76px;
+                width: 76px !important;
             }
             &:hover .menu-mini-user-initials {
                 display: none;
