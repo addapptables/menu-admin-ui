@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 @Component({
     selector: 'addapptable-menu-user',
     templateUrl: './menu-user.component.html',
+    styleUrls: ['./menu-user.component.scss'],
     host: {
         class: 'menu-user d-flex flex-column align-items-center'
     },
