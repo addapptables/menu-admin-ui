@@ -9,6 +9,13 @@ ADAPTABLES menu is a library for angular
 ## Getting Started
 To get started, let's install the package through npm:
 
+Choose the version corresponding to your Angular version:
+
+ Angular     | @addapptables/menu
+ ----------- | -------------------
+ 8           | 2.x
+ 7           | 1.x
+
 ```
 npm i @addapptables/menu --S
 ```

@@ -28,10 +28,10 @@ export class MenuService {
         );
         this.initMenuMini();
         this.initScreen();
-        this.collapseMenu$ = combineLatest(
+        this.collapseMenu$ = combineLatest([
             this.activeMenuMini$,
             this.activeMobile$
-        ).pipe(
+        ]).pipe(
             map(([activeMenuMini, activeMobile]) => (activeMenuMini && !activeMobile)),
             distinctUntilChanged(),
             shareReplay()
@@ -46,7 +46,7 @@ export class MenuService {
     }
 
     private initScreen() {
-        this.activeMobile$ = combineLatest(
+        this.activeMobile$ = combineLatest([
             this._store.pipe(
                 select(selectAllScreen),
                 map(x => x.xs || x.sm),
@@ -54,7 +54,7 @@ export class MenuService {
                 shareReplay()
             ),
             this.open$
-        ).pipe(
+        ]).pipe(
             map(([activeMobile, isOpen]) => {
                 isOpen && !activeMobile && this._store.dispatch(new MenuOpened());
                 return activeMobile;
