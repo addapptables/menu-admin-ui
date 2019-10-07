@@ -124,6 +124,10 @@
                 transform: translateX(-50%);
                 left: 50%;
             }
+            &-subtitle {
+                display: grid;
+                padding: 0 1em;
+            }
         }
         &-scroll-container {
             max-width: 100%;

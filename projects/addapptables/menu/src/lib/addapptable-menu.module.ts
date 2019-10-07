@@ -8,7 +8,7 @@ import { MenuUserComponent } from './components/menu-user/menu-user.component';
 import { MenuStore } from './store/menu.store';
 import { RouterModule } from '@angular/router';
 import { SharedPrintMenuComponent } from './components/menu-items-link/components/shared-print-menu/shared-print-menu.component';
-import { MatButtonModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/material';
 import { CollapseButtonMobileComponent } from './components/collapse-button-mobile/collapse-button-mobile.component';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
@@ -21,6 +21,7 @@ import { AddapptablePerfectScrollbarModule } from '@addapptables/perfect-scrollb
     TranslateModule,
     MatButtonModule,
     MatIconModule,
+    MatTooltipModule,
     RouterModule,
     AddapptablePerfectScrollbarModule,
     ReduxRegisterModule.forFeature('addapptablemenu', { sidebar: MenuStore }),
